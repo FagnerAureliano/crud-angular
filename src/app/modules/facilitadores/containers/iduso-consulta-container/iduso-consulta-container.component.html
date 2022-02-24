@@ -1,0 +1,62 @@
+<section class="l-iduso-consulta-container">
+  <header>
+    <div class="l-iduso-consulta-container__header">
+      <div class="p-grid l-main-grid">
+        <div class="p-col-12 p-xl-10 p-xl-offset-1">
+          <p-breadcrumb
+            [model]="_breadcrumbItems"
+            [home]="_home"
+            styleClass="p-mt-3"
+            (onItemClick)="handleBreadcrumbClick($event)"
+          ></p-breadcrumb>
+        </div>
+        <div
+          class="l-iduso-consulta-container__title-wrapper p-col-12 p-xl-10 p-xl-offset-1 p-mb-3 p-d-flex p-ai-center"
+        >
+          <h2 class="l-iduso-consulta-container__title p-ml-3">
+            IDENTIFICADOR DE USO
+          </h2>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="l-iduso-consulta-container__body">
+    <div class="p-grid l-main-grid">
+      <div class="p-col-12 p-xl-10 p-xl-offset-1">
+        <p-card styleClass="p-mt-3 p-reset">
+          <p-toolbar styleClass="p-mb-2">
+            <div class="p-toolbar-group-left">
+              <!-- <shrd-searchbox
+                (changed)="handleSearch($event[0], $event[1])"
+              ></shrd-searchbox> -->
+            </div>
+            <div class="p-toolbar-group-right">
+              <a routerLink="cadastro">
+                <button
+                  pButton
+                  pRipple
+                  class="p-button-sm"
+                  label="NOVO"
+                  icon="pi pi-plus"
+                  (click)="handleNewIduso()"
+                  [disabled]="_isNewBtnDisabled"
+                ></button>
+              </a>
+            </div>
+          </p-toolbar>
+          <plan-iduso-tabela
+            [data]="idusos"
+            (lancamentoDeleted)="updateTable(_currentPage, true)"
+          ></plan-iduso-tabela>
+          <!-- <p-paginator
+            #paginator
+            styleClass="p-mt-2"
+            [rows]="pageablePageSize"
+            [totalRecords]="pageableTotalIdusos"
+            (onPageChange)="updateTable($event.page)"
+          ></p-paginator> -->
+        </p-card>
+      </div>
+    </div>
+  </section>
+</section>

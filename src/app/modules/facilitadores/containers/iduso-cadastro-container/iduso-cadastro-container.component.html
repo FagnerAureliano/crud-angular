@@ -1,0 +1,100 @@
+<section class="l-iduso-cadastro-container">
+  <header>
+    <div class="l-iduso-cadastro-container__header">
+      <div class="p-grid l-main-grid">
+        <div class="p-col-12 p-xl-10 p-xl-offset-1">
+          <p-breadcrumb
+            [model]="_breadcrumbItems"
+            [home]="_home"
+            styleClass="p-mt-3"
+            (onItemClick)="handleBreadcrumbClick($event)"
+          ></p-breadcrumb>
+        </div>
+        <div
+          class="l-iduso-cadastro-container__title-wrapper p-col-12 p-xl-10 p-xl-offset-1 p-d-flex p-ai-center p-jc-between p-mb-3"
+        >
+          <div>
+            <h2 class="l-iduso-cadastro-container__title p-ml-3" *ngIf="!iduso">
+              Cadastro de IDUSO
+            </h2>
+            <h2 class="l-iduso-cadastro-container__title p-ml-3" *ngIf="iduso">
+              Edição de IDUSO
+            </h2>
+          </div>
+          <div>
+            <p-button
+              label="LIMPAR FORMULÁRIO"
+              icon="pi pi-undo"
+              styleClass="p-button-outlined p-button-secondary p-mr-3"
+              (onClick)="clearForm()"
+            ></p-button>
+            <p-button
+              label="SALVAR IDUSO"
+              icon="pi pi-save"
+              (onClick)="handleSubmit()"
+              [disabled]="_isSubmitBtnDisabled || form.invalid"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="l-iduso-cadastro-container__body">
+    <div class="p-grid l-main-grid">
+      <div class="p-col-12 p-xl-10 p-xl-offset-1 p-mt-3 p-mb-2">
+        <p-card>
+          <form [formGroup]="form">
+            <div class="p-fluid p-formgrid p-grid">
+              <div class="p-field p-col-12">
+                <label
+                  [ngClass]="{
+                    'p-invalid':
+                      form.get('codigo')?.invalid &&
+                      (form.get('codigo')?.dirty || form.get('codigo')?.touched)
+                  }"
+                >
+                  Código
+                </label>
+                <input
+                  pInputText
+                  type="text"
+                  maxlength="2"
+                  pKeyFilter="int"
+                  placeholder="Digite um código válido para o Identificador de Uso"
+                  formControlName="codigo"
+                  [ngClass]="{
+                    'ng-dirty ng-invalid':
+                      form.get('codigo')?.invalid &&
+                      (form.get('codigo')?.dirty || form.get('codigo')?.touched)
+                  }"
+                />
+              </div>
+              <div class="p-field p-col-12">
+                <label
+                  [ngClass]="{
+                    'p-invalid':
+                      form.get('nome')?.invalid &&
+                      (form.get('nome')?.dirty || form.get('nome')?.touched)
+                  }"
+                >
+                  Nome
+                </label>
+                <input
+                  pInputText
+                  placeholder="Digite o nome do Identificador de Uso"
+                  formControlName="nome"
+                  maxlength="1024"
+                  [ngClass]="{
+                    'ng-dirty ng-invalid':
+                      form.get('nome')?.invalid &&
+                      (form.get('nome')?.dirty || form.get('nome')?.touched)
+                  }"
+                />
+              </div>
+            </div>
+          </form>
+        </p-card>
+      </div>
+    </div>
+  </section>
+</section>

@@ -3,7 +3,25 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  homolog: false,
+  development: true,
+
+  version: '1.3.5',
+
+  KEYCLOAK_URL: 'http://localhost:8190/auth',
+  KEYCLOAK_REALM: 'FAB',
+  KEYCLOAK_CLIENT_ID: 'sisplaer',
+
+  // SISPLAER_API: 'https://localhost:8443/api/v1',
+  SISPLAER_API: 'https://jsonplaceholder.typicode.com',
+  SISPLAER_FRONT_URL: 'http://localhost:4200/sisplaer-3.0',
+
+  PLANEJAMENTO_FRONT_URL: 'http://localhost:4201/sisplaer-3.0-planejamento',
+
+  CREDITO_FRONT_URL: 'http://localhost:4204/sisplaer-3.0-credito',
+
+  DEFAULT_PAGE_SIZE: 20,
 };
 
 /*

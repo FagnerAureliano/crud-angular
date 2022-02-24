@@ -1,0 +1,59 @@
+<p-table
+  currentPageReportTemplate="Mostrando de {first} a {last} dos {totalRecords} cadastrados"
+  styleClass="p-datatable-gridlines p-datatable-striped  p-datatable-sm-custom"
+  dataKey="id"
+  [value]="data"
+  [globalFilterFields]="['id', 'codigo', 'nome']"
+  [rowHover]="true"
+  [autoLayout]="true"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="p-col-1" pSortableColumn="codigo">
+        Código
+        <p-sortIcon field="codigo"></p-sortIcon>
+      </th>
+      <th pSortableColumn="nome">
+        Nome
+        <p-sortIcon field="nome"></p-sortIcon>
+      </th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-iduso>
+    <tr [pSelectableRow]="iduso">
+      <td>{{ iduso?.id }}</td>
+      <td>{{ iduso?.name }}</td>
+      <td class="p-col-2">
+        <div class="p-d-flex p-ai-center p-jc-center">
+          <button
+            pButton
+            icon="pi pi-pencil"
+            label="Editar"
+            class="p-button-text p-button-secondary p-button-sm p-mr-1"
+            (click)="handleEdit(iduso?.id)"
+            [disabled]="_isActionBtnDisabled"
+          ></button>
+          <button
+            pButton
+            icon="pi pi-trash"
+            label="Excluir"
+            class="p-button-text p-button-danger p-button-sm"
+            (click)="handleDelete($event, iduso?.id)"
+            [disabled]="_isActionBtnDisabled"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template></ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">
+        <span class="p-d-flex p-jc-center emptyTableMessage">
+          {{ 'Resultado não encontrado' | uppercase }}
+        </span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

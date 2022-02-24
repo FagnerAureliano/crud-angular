@@ -1,0 +1,30 @@
+:host {
+  display: block;
+
+  section.l-iduso-consulta-container {
+    header {
+      overflow: hidden;
+
+      div.l-iduso-consulta-container__header {
+        background-color: var(--lighter-grey);
+        border-bottom: 1px solid var(--light-grey);
+        width: 100%;
+
+        .l-iduso-consulta-container__title-wrapper {
+          h2.l-iduso-consulta-container__title {
+            font-weight: 600;
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+          }
+          min-height: 4.5rem;
+        }
+      }
+    }
+
+    section.l-iduso-consulta-container__body {
+      position: relative;
+    }
+  }
+}
